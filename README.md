@@ -24,13 +24,16 @@ Check out the unit tests on [CodePen](https://codepen.io/jonkemp/full/OJVXabQ).
 ## Usage
 
 ```js
-const pluck = require('pick-util');
+const pick = require('pick-util');
 
-pick({ 'a': 1, 'b': '2', 'c': 3 }, 'a', 'c');
+pick({ 'a': 1, 'b': '2', 'c': 3 }, ['a', 'c']);
 //=> { 'a': 1, 'c': 3 }
 
-pick({ 'user': 'barney',  'age': 36, 'active': true }, ['user', 'active']);
-//=> { 'user': 'barney', 'active': true }
+pick({ name: 'moe', age: 50, userid: 'moe1' }, 'name', 'age');
+//=> { name: 'moe', age: 50 }
+
+pick({ name: 'moe', age: 50, userid: 'moe1' }, (value) => isNumber(value));
+//=> { age: 50 }
 ```
 
 ---
@@ -50,7 +53,7 @@ The object to filter.
 
 #### keys
 
-Type: `array` or comma separated list of `string` values  
+Type: `array` or comma separated list of `string` values or `function`  
 Default: `none`
 
 Keys for the picked properties.
