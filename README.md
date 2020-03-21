@@ -1,6 +1,6 @@
 # pick-util [![Build Status](https://travis-ci.com/jonkemp/pick-util.svg?branch=master)](https://travis-ci.com/jonkemp/pick-util)
 
-> Return a copy of the object only containing the whitelisted properties.
+> Return a copy of the object only containing the whitelisted properties. Alternatively accepts a predicate indicating which keys to pick.
 
 Inspired by `_.pick`. 😄
 
@@ -16,7 +16,7 @@ $ npm install pick-util
 Or [unpkg](https://unpkg.com/pick-util/)
 
 ```
-<script src="https://unpkg.com/pick-util@1.0.0/umd/index.js" />
+<script src="https://unpkg.com/pick-util@1.1.0/umd/index.js" />
 ```
 
 Check out the unit tests on [CodePen](https://codepen.io/jonkemp/full/OJVXabQ).
@@ -31,6 +31,8 @@ pick({ 'a': 1, 'b': '2', 'c': 3 }, ['a', 'c']);
 
 pick({ name: 'moe', age: 50, userid: 'moe1' }, 'name', 'age');
 //=> { name: 'moe', age: 50 }
+
+const isNumber = obj => toString.call(obj) === '[object Number]';
 
 pick({ name: 'moe', age: 50, userid: 'moe1' }, (value) => isNumber(value));
 //=> { age: 50 }
@@ -56,7 +58,7 @@ The object to filter.
 Type: `array` or comma separated list of `string` values or `function`  
 Default: `none`
 
-Keys for the picked properties.
+Keys for the picked properties. Or a predicate indicating which keys to pick. 
 
 ## License
 
