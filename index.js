@@ -1,35 +1,10 @@
-const flatten = require('flat-util');
-
-const isFunction = obj => toString.call(obj) === '[object Function]';
-
-const optimizeCb = (func, context, argCount) => {
-	if (context === void 0) return func;
-	switch (argCount == null ? 3 : argCount) {
-		case 1: return value => func.call(context, value);
-			// The 2-argument case is omitted because we’re not using it.
-		case 3: return (value, index, collection) => func.call(context, value, index, collection);
-		case 4: return (accumulator, value, index, collection) => func.call(context, accumulator, value, index, collection);
-	}
-
-	return (...args) => func.apply(context, args);
-};
-
-const isObject = obj => {
-	const type = typeof obj;
-
-	return type === 'function' || type === 'object' && !!obj;
-};
-
-const allKeys = obj => {
-	if (!isObject(obj)) return [];
-	const keys = [];
-
-	for (const key in obj) keys.push(key);
-
-	return keys;
-};
-
-const keyInObj = (value, key, obj) => key in obj;
+const {
+	keyInObj,
+	allKeys,
+	optimizeCb,
+	isFunction,
+	flatten
+} = require('@jonkemp/package-utils');
 
 module.exports = (obj, ...keys) => {
 	const result = {};

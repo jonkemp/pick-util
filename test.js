@@ -1,29 +1,10 @@
 const assert = require('assert');
+const {
+	isNumber,
+	hasProperty,
+	constant
+} = require('@jonkemp/package-utils');
 const pick = require('./');
-
-const isNumber = obj => toString.call(obj) === '[object Number]';
-
-const has = (obj, path) => obj != null && Object.prototype.hasOwnProperty.call(obj, path);
-
-const hasProperty = (obj, path) => {
-	if (!Array.isArray(path)) {
-		return has(obj, path);
-	}
-	const { length } = path;
-
-	for (let i = 0; i < length; i++) {
-		const key = path[i];
-
-		if (obj == null || !Object.prototype.hasOwnProperty.call(obj, key)) {
-			return false;
-		}
-		obj = obj[key];
-	}
-
-	return !!length;
-};
-
-const constant = value => () => value;
 
 describe('pick', () => {
 	it('should look through the list and return a copy of the object only containing the whitelisted properties', () => {
