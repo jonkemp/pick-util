@@ -1,9 +1,6 @@
 const assert = require('assert');
-const {
-	isNumber,
-	hasProperty,
-	constant
-} = require('@jonkemp/package-utils');
+const has = require('has-util');
+const { isNumber, constant } = require('@jonkemp/package-utils');
 const pick = require('./');
 
 describe('pick', () => {
@@ -77,7 +74,7 @@ describe('pick', () => {
 	});
 
 	it('does not set own property if property not in object', () => {
-		assert.ok(!hasProperty(pick({}, 'foo'), 'foo'));
+		assert.ok(!has(pick({}, 'foo'), 'foo'));
 	});
 
 	it('passes same object as third parameter of iteratee', () => {
