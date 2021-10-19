@@ -1,4 +1,4 @@
-# pick-util [![Build Status](https://travis-ci.com/jonkemp/pick-util.svg?branch=master)](https://travis-ci.com/jonkemp/pick-util)
+# pick-util ![Build Status](https://github.com/jonkemp/pick-util/actions/workflows/main.yml/badge.svg?branch=master)
 
 > Return a copy of the object only containing the whitelisted properties. Alternatively accepts a predicate indicating which keys to pick.
 
