@@ -16,7 +16,7 @@ $ npm install pick-util
 Or [unpkg](https://unpkg.com/pick-util/)
 
 ```
-<script src="https://unpkg.com/pick-util@1.1.2/umd/index.js" />
+<script src="https://unpkg.com/pick-util@1.1.5/umd/index.js" />
 ```
 
 Check out the unit tests on [CodePen](https://codepen.io/jonkemp/full/OJVXabQ).
