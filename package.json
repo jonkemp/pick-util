@@ -1,6 +1,6 @@
 {
 	"name": "pick-util",
-	"version": "1.1.4",
+	"version": "1.1.5",
 	"description": "Return a copy of the object only containing the whitelisted properties.",
 	"main": "index.js",
 	"scripts": {
